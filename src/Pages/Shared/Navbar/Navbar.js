@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Appointment from './../../Appointment/Appointment/Appointment';
 
 const Navbar = () => {
 
     //variable declaration
     const MenuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/booking">Booking</Link></li>
+        <li><Link to="/appointment">Appointment</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/reviews">Reviews</Link></li>
         <li><Link to="/login">Login</Link></li>

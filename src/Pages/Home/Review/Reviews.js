@@ -25,7 +25,7 @@ const Reviews = () => {
      },
      {
         _id:3,
-        name:'— Paul C.',
+        name:'— Emaa.',
         image:people3,
         userReview:'Our whole family has been getting our hair done by Cherie for ten years now. My wife has very curly hair and Cherie has been the only stylist we have found who is able to make her love her hair again. Thanks for your friendly yet professional studio, even makes this old man comfortable like an old neighborhood barber shop would!',
         location:'Arsenal'
