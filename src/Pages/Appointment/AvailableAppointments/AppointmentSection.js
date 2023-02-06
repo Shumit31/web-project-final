@@ -1,7 +1,7 @@
 import React from 'react'
 import Appointment from './../Appointment/Appointment';
 
-export const AppointmentSection = ({appointmentSection}) => {
+export const AppointmentSection = ({appointmentSection,setService}) => {
     const{name,slots}=appointmentSection;
     
   return (
@@ -12,7 +12,12 @@ export const AppointmentSection = ({appointmentSection}) => {
     <p>{slots.length>0 ? slots[0]:'Try another day'}</p>
     <p>{slots.length} {slots.length>1?'spaces' :'space' } available</p>
     <div className="card-actions justify-center">
-      <button className="btn btn-primary text-white">Book Appointment</button>
+      
+      <label 
+      htmlFor="booking-modal" className="btn btn-primary text-white"
+      onClick={()=>setService(appointmentSection)}
+      
+      >BOOK APPOINTMENT</label>
     </div>
   </div>
 </div>
