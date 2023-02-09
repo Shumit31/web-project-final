@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from './../../contexts/AuthProvider';
 
 const SignUp = () => {
   const {register,handleSubmit,formState:{errors}}=useForm();
+
+
+  const {createUser}=useContext(AuthContext);
   const handleSignUp=(data)=>{
     console.log(data);
+    createUser(data.email,data.password)
+    .then(result=>{
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(error=>console.log(error));
   }
   return (
-    <div className='h-[600px] flex justify-center items-center'>
+    <div className='h-[800px] flex justify-center items-center'>
     <div className='w-96 p-7'>
       <h2 className='text-3xl text-center'>SignUp</h2>
       <form onSubmit={handleSubmit(handleSignUp)} >
@@ -54,25 +64,10 @@ const SignUp = () => {
            {errors.password &&<p className='text-red-600'>{errors.password.message}</p>}
         
         </div>
-        <div className="form-control w-full max-w-xs">
-          <label className="label"> <span className="label-text">Phone Number</span>   </label>
-          <input type="number"
-           {...register("number",{
-            required:"Phone Number is required",
-             maxLength:{value:11,message:"Phone Number must be 11 characters long"},
-            pattern:{ value: /(\+88|88)?-?01[1-9]\d{8}/g, message: 'Valid Phone number required' }
+       
 
 
-         
-           })} 
-           
-           className="input input-bordered w-full max-w-xs" />
-           {errors.number &&<p className='text-red-600'>{errors.number.message}</p>}
-        
-        </div>
-
-
-        <input className='btn btn-content w-full'  value='Sign Up' type="submit" />
+        <input className='btn btn-content w-full mt-4'  value='Sign Up' type="submit" />
       </form>
 
 
