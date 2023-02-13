@@ -4,6 +4,7 @@ import AppointmentSection from './AppointmentSection';
 import BookingModal from '../BookingModal/BookingModal';
 import { useQuery } from '@tanstack/react-query';
 import { async } from '@firebase/util';
+import Loading from '../../Shared/Loading/Loading';
 
 const AvailableAppointments = ({selectedDate}) => {
     // const [appointmentSection,setappointmentSection]=useState([]);
@@ -12,7 +13,7 @@ const AvailableAppointments = ({selectedDate}) => {
     const date=format(selectedDate,'PP');
 
 
-  const{data:appointmentSection=[]}=useQuery({
+  const{data:appointmentSection=[],refetch,isLoading}=useQuery({
     queryKey:['appointmentsection',date],
     queryFn:async()=>{
       const res =await fetch(`http://localhost:5000/appointmentsection?date=${date}`);
@@ -22,7 +23,9 @@ const AvailableAppointments = ({selectedDate}) => {
   })
 
 
-
+if(isLoading){
+  return <Loading></Loading>
+}
 
 
 
@@ -52,6 +55,8 @@ const AvailableAppointments = ({selectedDate}) => {
           selectedDate={selectedDate}
           service={service}
           setService={setService}
+
+          refetch={refetch}
           ></BookingModal>
       }
     </section>
