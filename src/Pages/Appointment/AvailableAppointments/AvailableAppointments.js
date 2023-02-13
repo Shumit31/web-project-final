@@ -3,16 +3,22 @@ import { format } from 'date-fns';
 import AppointmentSection from './AppointmentSection';
 import BookingModal from '../BookingModal/BookingModal';
 import { useQuery } from '@tanstack/react-query';
+import { async } from '@firebase/util';
 
 const AvailableAppointments = ({selectedDate}) => {
     // const [appointmentSection,setappointmentSection]=useState([]);
     const [service,setService]=useState(null);
 
+    const date=format(selectedDate,'PP');
 
-  const{data:appointmentSection=[],isLoading}=useQuery({
-    queryKey:['appointmentsection'],
-    queryFn:()=>fetch('http://localhost:5000/appointmentsection')
-    .then(res=>res.json())
+
+  const{data:appointmentSection=[]}=useQuery({
+    queryKey:['appointmentsection',date],
+    queryFn:async()=>{
+      const res =await fetch(`http://localhost:5000/appointmentsection?date=${date}`);
+      const data= await res.json();
+      return data;
+    }
   })
 
 
