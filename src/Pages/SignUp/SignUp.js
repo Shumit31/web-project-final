@@ -35,8 +35,9 @@ const navigate =useNavigate();
 
       updateUser(userInfo)
       .then(()=>{
+        saveUser(data.name,data.email);
 
-        navigate('/');
+        
       })
       .catch(err=>console.log(err));
     })
@@ -46,6 +47,22 @@ const navigate =useNavigate();
     
     
     });
+  }
+
+  const saveUser = (name, email) =>{
+    const user ={name, email};
+    fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data =>{
+       navigate('/');
+    })
+
   }
   return (
     <div className='h-[600px] flex justify-center items-center'>
