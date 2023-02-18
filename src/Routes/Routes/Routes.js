@@ -9,6 +9,10 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from './../../Layout/DashboardLayout';
 import MyAppointment from "../../Pages/DashBoard/MyAppointment/MyAppointment";
 import AllUsers from "../../Pages/DashBoard/AllUsers/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AddSpecialist from './../../Pages/DashBoard/AddSpecialist/AddSpecialist';
+import ManageSpecialists from './../../Pages/DashBoard/ManageSpecialists/ManageSpecialists';
+
 
 const router = createBrowserRouter([
 
@@ -46,8 +50,18 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/allusers',
-                element:<AllUsers></AllUsers>
-            }
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path:'/dashboard/addspecialists',
+                element:<AdminRoute><AddSpecialist></AddSpecialist></AdminRoute>
+            },
+            {
+                path:'/dashboard/managespecialists',
+                element:<AdminRoute><ManageSpecialists></ManageSpecialists></AdminRoute>
+            },
+          
+           
         ]
     }
     
