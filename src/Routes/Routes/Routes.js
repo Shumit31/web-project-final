@@ -12,6 +12,7 @@ import AllUsers from "../../Pages/DashBoard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddSpecialist from './../../Pages/DashBoard/AddSpecialist/AddSpecialist';
 import ManageSpecialists from './../../Pages/DashBoard/ManageSpecialists/ManageSpecialists';
+import Payment from "../../Pages/DashBoard/Payment/Payment";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/managespecialists',
                 element:<AdminRoute><ManageSpecialists></ManageSpecialists></AdminRoute>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element:<AdminRoute><Payment></Payment></AdminRoute>,
+                loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
             },
           
            
