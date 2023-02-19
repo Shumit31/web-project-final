@@ -101,7 +101,7 @@ const AddSpecialist = () => {
           <label className="label"> <span className="label-text">Speciality</span>   </label>
           <select 
           
-          {...register('speciality')}
+          {...register('specialty')}
           className="select input-bordered w-full max-w-xs">
  
 
@@ -110,8 +110,8 @@ const AddSpecialist = () => {
     key={specialty._id}
     value={specialty.name}
     
-    >
-        {specialty.name}</option>)
+    >{specialty.name}</option>)
+        
   }
   
 
