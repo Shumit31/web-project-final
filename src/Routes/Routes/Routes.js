@@ -13,6 +13,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import AddSpecialist from './../../Pages/DashBoard/AddSpecialist/AddSpecialist';
 import ManageSpecialists from './../../Pages/DashBoard/ManageSpecialists/ManageSpecialists';
 import Payment from "../../Pages/DashBoard/Payment/Payment";
+import DisplayError from './../../Pages/Shared/DisplayError/DisplayError';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<DisplayError></DisplayError>,
         children:[
             {
                 path:'/',
@@ -44,6 +46,7 @@ const router = createBrowserRouter([
     {
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement:<DisplayError></DisplayError>,
         children:[
             {
               path:'/dashboard',
