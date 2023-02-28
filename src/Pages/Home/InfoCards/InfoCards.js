@@ -5,7 +5,7 @@ import phone from '../../../assets/icons/phone.svg';
 import InfoCard from './InfoCard';
 
 const InfoCards = () => {
-
+      //data of info cards
     const cardData = [
         {
             id: 1,
@@ -31,11 +31,13 @@ const InfoCards = () => {
             icon: phone,
             bgClass: 'bg-warning'
         }
+        
     ]
     return (
         <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 '>
+            
             {
-                cardData.map(card => <InfoCard
+                cardData.map(card => <InfoCard          //array map method for loading one info card
                     key={card.id}
                     card={card}></InfoCard>)
             }

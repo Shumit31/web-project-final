@@ -33,7 +33,7 @@ const [token] = UseToken(loginUserEmail)
 
 
 
-
+  //login method
   const handleLogin=data=>{
     console.log(data);
      setLoginError('');
@@ -57,8 +57,8 @@ const [token] = UseToken(loginUserEmail)
   return (
     <div className='h-[600px] flex justify-center items-center'>
       <div className='w-96 p-7'>
-        <h2 className='text-3xl text-center'>LogIn</h2>
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <h2  className='text-3xl text-center'>LogIn</h2>
+        <form onSubmit={handleSubmit(handleLogin)}>               
 
 
           <div className="form-control w-full max-w-xs">
@@ -86,25 +86,24 @@ const [token] = UseToken(loginUserEmail)
           
           })}
              className="input input-bordered w-full max-w-xs" />
-            <label className="label"><span className="label-text">Forget Password</span>   </label>
+            <label className="label"><span className="label-text"></span>   </label>
+            <label className="label"><span className="label-text"></span>   </label>
             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
           </div>
 
 
-          <input className='btn btn-content w-full'  value='login' type="submit" />
+          <input className='btn btn-content w-full '  value='login' type="submit" />
          <div className='text-red-600'>
           {loginError && <p>{loginError}</p>}
          </div>
-
         </form>
+       <p>New to Chérie?<Link className='text-primary' to='/signup'>Create new account</Link></p>
+   
 
 
-        <p>New to Chérie?<Link className='text-primary' to='/signup'>Create new account</Link></p>
+       
 
-
-        <div className='divider'>OR</div>
-
-        <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+      
 
 
       </div>

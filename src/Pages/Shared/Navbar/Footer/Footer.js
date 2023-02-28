@@ -16,7 +16,7 @@ const Footer = () => {
    <div className='footer'>
    <div>
       <span className="footer-title">Services</span> 
-      <a href='/' className="link link-hover">Branding</a>
+      <a href='/' className="link link-hover list-none">Branding</a>
       <a href='/' className="link link-hover">Design</a>
       <a href='/' className="link link-hover">Marketing</a>
       <a href='/' className="link link-hover">Advertisement</a>

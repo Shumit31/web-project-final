@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Service = ({service}) => {
-    const {name,description,img}=service;
+    const {name,description,img}=service; //service data destructuring
   return (
     <div>
         <div className="card  bg-base-100 shadow-xl h-full">

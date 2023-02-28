@@ -10,7 +10,7 @@ const SignUp = () => {
   const {register,handleSubmit,formState:{errors}}=useForm();
 
 
-  const {createUser,updateUser}=useContext(AuthContext);
+  const {createUser,updateUser}=useContext(AuthContext); //signup context
 
 const [signUpError,setsignUpError]=useState('');
 
@@ -28,7 +28,7 @@ if(token){
 
 
 
-
+ //event handler for sign up
   const handleSignUp=(data)=>{
     console.log(data);
     setsignUpError('')
@@ -134,9 +134,9 @@ if(token){
       <p>Already have an account?<Link className='text-primary' to='/login'>Please Login</Link></p>
 
 
-      <div className='divider'>OR</div>
 
-      <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+
+      
 
 
     </div>

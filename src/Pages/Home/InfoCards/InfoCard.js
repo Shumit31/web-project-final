@@ -1,7 +1,7 @@
 import React from 'react'
 
 const InfoCard = ({card}) => {
-    const{name,description,icon,bgClass}=card;
+    const{name,description,icon,bgClass}=card; //destructuring data
   return (
     <div>
         <div className={` p-6 h-full  flex card md:card-side  shadow-xl ${bgClass}`}>

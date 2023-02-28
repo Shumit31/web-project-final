@@ -8,7 +8,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 const AvailableAppointments = ({selectedDate}) => {
     // const [appointmentSection,setappointmentSection]=useState([]);
-    const [service,setService]=useState(null);
+    const [service,setService]=useState(null);  //for showing booking information
 
     const date=format(selectedDate,'PP');
 
@@ -37,24 +37,26 @@ if(isLoading){
 
   
   return (
-    <section className='my-16'>
+    <section className='my-16 '>
         <p className='text-center text-primary font-bold'>Available  Appointment on {format(selectedDate,'PP')} </p>
         <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
 
 {
     appointmentSection.map(section=><AppointmentSection
     key={section._id}
-    appointmentSection={section}
+    appointmentSection={section} //for showing all cards of services
     setService={setService}
     
     ></AppointmentSection>)
 }
         </div>
+
+
       {    service &&
           <BookingModal
           selectedDate={selectedDate}
           service={service}
-          setService={setService}
+          setService={setService}   //
 
           refetch={refetch}
           ></BookingModal>

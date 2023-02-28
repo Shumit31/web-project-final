@@ -5,12 +5,14 @@ import { toast } from 'react-hot-toast';
 
 const BookingModal = ({service,selectedDate,setService,refetch}) => {
   const{name:serviceName,slots,price}=service; //appointment section
-  const date=format(selectedDate,'PP');
+
+  const date=format(selectedDate,'PP');//for showing date 
 
 
   const {user}=useContext(AuthContext);
 
-//event handler
+//event handler for form submission data
+
 const handleBooking=event=>{
   event.preventDefault();
   const form =event.target;
@@ -19,6 +21,7 @@ const handleBooking=event=>{
   const slot=form.slot.value;
   const phone =form.phone.value;
 
+//booking object
 
 const  booking ={
   appointmentDate:date,
@@ -29,6 +32,7 @@ const  booking ={
   phone,
   price
 }
+
  fetch('http://localhost:5000/bookings',{
   method:'POST',
   headers:{
@@ -61,17 +65,19 @@ const  booking ={
   return (
     <>
      <input type="checkbox" id="booking-modal" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold">{serviceName}</h3>
+      <div className="modal">
+      <div className="modal-box relative">
+      <label htmlFor="booking-modal"  className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 className="text-lg font-bold">{serviceName}</h3>
+
+
+
+
+
    <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-
-
 
    <input type="text" disabled value={date} className="input input-bor w-full " />
    
-  
    <select name="slot" className="select select-bordered w-full">
                             {
                                 slots.map((slot, i) => <option
@@ -80,6 +86,7 @@ const  booking ={
                                 >{slot}</option>)
                             }
                         </select>
+
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
                         <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
