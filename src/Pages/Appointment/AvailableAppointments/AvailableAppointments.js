@@ -10,9 +10,9 @@ const AvailableAppointments = ({selectedDate}) => {
     // const [appointmentSection,setappointmentSection]=useState([]);
     const [service,setService]=useState(null);  //for showing booking information
 
-    const date=format(selectedDate,'PP');
+    const date=format(selectedDate,'PP');//format of the date
 
-
+  //react query
   const{data:appointmentSection=[],refetch,isLoading}=useQuery({
     queryKey:['appointmentsection',date],
     queryFn:async()=>{
@@ -56,7 +56,7 @@ if(isLoading){
           <BookingModal
           selectedDate={selectedDate}
           service={service}
-          setService={setService}   //
+          setService={setService}   
 
           refetch={refetch}
           ></BookingModal>

@@ -1,9 +1,10 @@
 import { format } from 'date-fns';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from './../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const BookingModal = ({service,selectedDate,setService,refetch}) => {
+
   const{name:serviceName,slots,price}=service; //appointment section
 
   const date=format(selectedDate,'PP');//for showing date 
@@ -33,6 +34,8 @@ const  booking ={
   price
 }
 
+
+ //data from server to booking save in database
  fetch('http://localhost:5000/bookings',{
   method:'POST',
   headers:{
@@ -47,7 +50,7 @@ const  booking ={
 
 
   if(data.acknowledged){
-  setService(null);
+  setService(null); //to off the modal
   toast.success('Booking Confiremed');
   refetch();
   }
@@ -89,9 +92,10 @@ const  booking ={
 
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
-                        <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
+                        <input 
+                        name="phone" type="text"  placeholder="Phone Number" className="input w-full input-bordered" />
                         <br />
-                        <input className='btn btn-primary w-full' type="submit" value="Submit" />
+                        <input  className='btn btn-primary w-full' type="submit" value="Submit" />
    </form>
   </div>
 </div> 

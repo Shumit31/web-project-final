@@ -7,6 +7,7 @@ import UseToken from '../../hooks/useToken';
 
 
 const SignUp = () => {
+  
   const {register,handleSubmit,formState:{errors}}=useForm();
 
 
@@ -33,6 +34,8 @@ if(token){
     console.log(data);
     setsignUpError('')
 
+
+     //context to get and createuser with  the email and pass into firebase 
     createUser(data.email,data.password)
     .then(result=>{
       const user = result.user;
@@ -43,6 +46,7 @@ if(token){
         displayName:data.name
       }
 
+      //update the user
       updateUser(userInfo)
       .then(()=>{
         saveUser(data.name,data.email);
@@ -59,6 +63,8 @@ if(token){
     });
   }
 
+
+  //to get the user in all user
   const saveUser = (name, email) =>{
     const user ={name, email};
     fetch('http://localhost:5000/users', {
@@ -116,14 +122,29 @@ if(token){
             required:"Password is required",
             minLength:{value:6,message:"Password must be 6 characters long"},
 
-            pattern:{ value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
+            pattern:{ value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z])(?=.*[0-9])/, message: 'Password must have uppercase number,lowercase, number and special characters' }
            })} 
            
            className="input input-bordered w-full max-w-xs" />
            {errors.password &&<p className='text-red-600'>{errors.password.message}</p>}
         
         </div>
-       
+        
+        {/* <div className="form-control w-full max-w-xs">
+          <label className="label"> <span className="label-text">Phone</span>   </label>
+          <input type="phone"
+           {...register("phone",{
+            required:"Password is required",
+            minLength:{value:11,message:"Password must be 6 characters long"},
+
+            pattern:{ value:/(\+88)?-?01[3-9]\d{8}/, message: 'Password must have uppercase number,lowercase, number and special characters' }
+           })} 
+           
+           className="input input-bordered w-full max-w-xs" />
+           {errors.phone &&<p className='text-red-600'>{errors.phone.message}</p>}
+        
+        </div> */}
+      
 
 
         <input className='btn btn-content w-full mt-4'  value='Sign Up' type="submit" />

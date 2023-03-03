@@ -10,15 +10,17 @@ import { AuthContext } from './../../contexts/AuthProvider';
 const LogIn = () => {
   const { register,formState: { errors }, handleSubmit } = useForm();
 
+  //login context
   const{signIn}=useContext(AuthContext);
+  //custom hook
   const[loginError,setLoginError]= useState('');
 
-
+  //to get the token
   const [loginUserEmail,setLoginUserEmail] =useState('');
 
 const [token] = UseToken(loginUserEmail)
 
-
+//navigate to home after login
   const location =useLocation();
   const navigate=useNavigate();
   const from = location.state?.from?.pathname || '/';
@@ -36,7 +38,9 @@ const [token] = UseToken(loginUserEmail)
   //login method
   const handleLogin=data=>{
     console.log(data);
-     setLoginError('');
+     setLoginError('');//to clear the error
+
+     //context to get and login  with  the email and pass into firebase 
     signIn(data.email,data.password)
     .then(result=>{
       const user =result.user;

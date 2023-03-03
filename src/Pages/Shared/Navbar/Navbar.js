@@ -7,7 +7,7 @@ const Navbar = () => {
 
     const {user,logOut}= useContext(AuthContext);
 
-
+    //to sign out user
     const handleLogOut=()=>{
         logOut()
         .then(()=>{})
@@ -39,7 +39,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 flex justify-between px-5 sticky  top-0 z-50 ">
+        <div className="navbar bg-base-100 flex justify-between px-5 sticky-top  ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -74,7 +74,8 @@ const Navbar = () => {
                     {MenuItems}
                 </ul>
             </div>
-            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+            
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden"> 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"

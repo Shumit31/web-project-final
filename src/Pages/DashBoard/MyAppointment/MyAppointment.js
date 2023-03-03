@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const MyAppointment = () => {
+    //to get th user
     const { user } = useContext(AuthContext);
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;

@@ -3,7 +3,7 @@ import banner from '../../../assets/images/banner.png';
 
 function Banner() {
   return (
-    <div className="hero  bg-base-200 mt-2">
+    <div className="hero  bg-base-200 mt-2 ">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img src={banner} alt="/" className=" rounded-lg lg:w=1/2 shadow-2xl" />
     <div>

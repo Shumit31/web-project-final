@@ -22,6 +22,7 @@ const AddSpecialist = () => {
         }
     })
 
+
     const handleSpecialist = data => {
         const image = data.image[0];
         const formData = new FormData();
@@ -42,7 +43,7 @@ const AddSpecialist = () => {
                     image: imgData.data.url
                 }
 
-            
+            //save specialist information into the data base
                 fetch('http://localhost:5000/specialists', {
                     method: 'POST',
                     headers: {
@@ -66,11 +67,12 @@ const AddSpecialist = () => {
         return <Loading></Loading>
     }
     return (
+        // <div className='flex justify-center items-center mt-36'>
         <div className='w-96 p-7'>
-            <h2 className='text-4xl'>Add a Specialist</h2>
-            <form onSubmit={handleSubmit(handleSpecialist)} >
+            <h2 className='text-4xl '>Add a Specialist</h2>
+            <form onSubmit={handleSubmit(handleSpecialist)}>
 
-      <div className="form-control w-full max-w-xs">
+      <div className="form-control w-full max-w-xs ">
           <label className="label"> <span className="label-text">Name</span></label>
           <input type="text"  
           {...register("name",{
@@ -134,6 +136,7 @@ const AddSpecialist = () => {
         
       </form>
         </div>
+        // </div>
     );
 };
 
